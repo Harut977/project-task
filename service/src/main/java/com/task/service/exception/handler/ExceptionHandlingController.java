@@ -121,13 +121,4 @@ public class ExceptionHandlingController {
         return new ResponseEntity<>(baseResponse, error.getHttpStatus());
     }
 
-
-    @ExceptionHandler(MissingRequestHeaderException.class)
-    public ResponseEntity<BaseResponse<Object>> userException(MissingRequestHeaderException ex) {
-        BaseResponse<Object> baseResponse =
-                new BaseResponse<>(false, "Your ", null);
-        return new ResponseEntity<>(baseResponse, HttpStatus.UNAUTHORIZED);
-    }
-
-
 }
