@@ -1,7 +1,6 @@
 package com.task.service.project.service.impl;
 
-
-import com.project.service.exception.models.NotFoundException;
+import com.task.service.exception.models.NotFoundException;
 import com.task.api.base.response.AllBaseResponse;
 import com.task.api.project.request.ProjectRequest;
 import com.task.api.project.response.ProjectResponse;

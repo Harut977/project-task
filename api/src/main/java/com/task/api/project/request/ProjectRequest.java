@@ -17,7 +17,6 @@ import java.util.List;
 @AllArgsConstructor
 public class ProjectRequest {
 
-
     @NotBlank(message = "Title should not be blank")
     @Size(max = 350, message = "Title has not to be  more than 350 ")
     private String title;
