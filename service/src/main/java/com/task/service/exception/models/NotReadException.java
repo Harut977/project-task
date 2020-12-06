@@ -1,4 +1,4 @@
-package com.project.service.exception.models;
+package com.task.service.exception.models;
 
 import lombok.Getter;
 import lombok.Setter;
