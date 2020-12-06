@@ -54,9 +54,7 @@ public class ProjectMapper {
 
     }
 
-
     private List<ContactResponse> fromContactEntitiesToContactResponse(List<ContactEntity> contactEntities) {
-
         return modelMapper.map(contactEntities, new TypeToken<List<ContactResponse>>() {
         }.getType());
 

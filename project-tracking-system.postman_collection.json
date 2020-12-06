@@ -1,0 +1,185 @@
+{
+	"info": {
+		"_postman_id": "acfa13ca-7260-45d9-bee8-25761e703061",
+		"name": "project-tracking-system",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "project",
+			"item": [
+				{
+					"name": "add",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "216a316b-1b7d-49d1-8dbc-88acbd003954",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									" \r",
+									"\r",
+									"    var id = pm.response.json().data.id;\r",
+									"\r",
+									"    pm.environment.set(\"id\", id);\r",
+									"  pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"First\",\r\n    \"status\": 0,\r\n    \"contacts\": [\r\n        {\r\n            \"contact\": \"asdda\",\r\n            \"email\":\"asd\",\r\n            \"phone\":\"akdsk\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/project",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"project"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"First\",\r\n    \"status\": 0,\r\n    \"contacts\": [\r\n        {\r\n            \"contact\": \"asdda\",\r\n            \"email\":\"asd\",\r\n            \"phone\":\"akdsk\"\r\n        },\r\n        {\r\n            \"contact\": \"asdda\",\r\n            \"email\":\"asd\",\r\n            \"phone\":\"akdsk\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/project/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"project",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/project/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"project",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/project?pageNumber=0&status=0&pageSize=0&title=First&sortBy=id&sortOrder=desc",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"project"
+							],
+							"query": [
+								{
+									"key": "pageNumber",
+									"value": "0"
+								},
+								{
+									"key": "status",
+									"value": "0"
+								},
+								{
+									"key": "pageSize",
+									"value": "0"
+								},
+								{
+									"key": "title",
+									"value": "First"
+								},
+								{
+									"key": "sortBy",
+									"value": "id"
+								},
+								{
+									"key": "sortOrder",
+									"value": "desc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/project/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"project",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
