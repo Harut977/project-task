@@ -1,9 +1,10 @@
 package com.task.service.project.service.impl;
 
-import com.task.service.exception.models.NotFoundException;
 import com.task.api.base.response.AllBaseResponse;
 import com.task.api.project.request.ProjectRequest;
 import com.task.api.project.response.ProjectResponse;
+import com.task.service.exception.models.NotFoundException;
+import com.task.service.exception.models.NotReadException;
 import com.task.service.project.entity.ProjectEntity;
 import com.task.service.project.mapper.ProjectMapper;
 import com.task.service.project.repository.ProjectRepository;
@@ -37,8 +38,8 @@ public class ProjectServiceImpl implements ProjectService {
             entity = projectRepository.save(entity);
 
         } catch (Exception e) {
-            LOGGER.warn("Project Not Created");
-            e.printStackTrace();
+            LOGGER.warn("Project not Created" + e.getMessage());
+            throw new NotReadException("Project not Created", HttpStatus.BAD_REQUEST);
         }
         return projectMapper.fromProjectEntityToProjectResponse(entity);
     }
@@ -57,11 +58,9 @@ public class ProjectServiceImpl implements ProjectService {
             projectRepository.save(entity);
             return true;
         } catch (Exception e) {
-            LOGGER.warn("Project Not Updated");
-            e.printStackTrace();
+            LOGGER.warn("Project not updated" + e.getMessage());
+            throw new NotReadException("Project not updated", HttpStatus.BAD_REQUEST);
         }
-        return true;
-
     }
 
     @Override
@@ -86,10 +85,9 @@ public class ProjectServiceImpl implements ProjectService {
             projectRepository.deleteById(id);
             return true;
         } catch (Exception e) {
-            LOGGER.warn("Project Not Deleted");
-            e.printStackTrace();
+            LOGGER.warn("Project not deleted" + e.getMessage());
+            throw new NotReadException("Project not deleted", HttpStatus.BAD_REQUEST);
         }
-        return false;
     }
 
     @Override
